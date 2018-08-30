@@ -74,7 +74,7 @@ if (isset($_POST["btnSubmit"])) {
 
     
     
-    
+    $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);       
         
     
     
@@ -306,7 +306,7 @@ print PHP_EOL . '<!-- SECTION 3 Display Form -->' . PHP_EOL;
             </fieldset> <!-- ends buttons -->
 </form>     
         
-    </article>
+    </article>     
 </main>     
 
 <?php include 'footer.php'; ?>
