@@ -259,53 +259,53 @@ print PHP_EOL . '<!-- SECTION 3 Display Form -->' . PHP_EOL;
             this prints out a css class so that we can highlight the background etc. to
             make it stand out that a mistake happened here.
        */
-    
+?>    
 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-       
-    
-?>
+<form action = "<?php print $phpSelf; ?>"
+          id = "frmRegister"
+          method = "post">
+
+                <fieldset class = "contact">
+                    <legend>Contact Information</legend>
+
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <p>
+                        <label class = "required" for = "txtEmail">Email</label>
+                            <input 
+
+                                   id = "txtEmail"
+                                   maxlength = "45"
+                                   name = "txtEmail"
+                                   onfocus = "this.select()"
+                                   placeholder = "Enter your email address"
+                                   tabindex = "120"
+                                   type = "text"
+                                   value = ""
+                            >
+                    </p>
+                </fieldset> <!-- ends contact -->
+
+            <fieldset class="buttons">
+                <legend></legend>
+                <input class = "button" id = "btnSubmit" name = "btnSubmit" tabindex = "900" type = "submit" value = "Register" >
+            </fieldset> <!-- ends buttons -->
+</form>     
+        
     </article>
 </main>     
 
