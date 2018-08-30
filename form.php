@@ -123,28 +123,28 @@ if (isset($_POST["btnSubmit"])) {
         // This block saves the data to a CSV file.   
         
         // array used to hold form values that will be saved to a CSV file
-        
+        $dataRecord = array();       
         
         // assign values to the dataRecord array
     
+        $dataRecord[] = $email;
     
+        // setup csv file
+        $myFolder = 'data/';
+        $myFileName = 'registration';
+        $fileExt = '.csv';
+        $filename = $myFolder . $myFileName . $fileExt;
     
-    
-    
-    
-    
-    
-    
-    
+        if ($debug) print PHP_EOL . '<p>filename is ' . $filename;
     
         // now we just open the file for append
-        
+        $file = fopen($filename, 'a');
     
         // write the forms informations
-        
+        fputcsv($file, $dataRecord);
     
         // close the file
-        
+        fclose($file);       
     
      
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
