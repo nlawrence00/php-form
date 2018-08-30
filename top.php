@@ -28,11 +28,11 @@ $path_parts = pathinfo($phpSelf);
 //
 // PATH SETUP
 
+$domain = '//';
 
+$server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, 'UTF-8');
 
-
-
-
+$domain .= $server;
 
 if ($debug) {
     print '<p>php Self: ' . $phpSelf;
@@ -49,7 +49,7 @@ if ($debug) {
 
 print  PHP_EOL . '<!-- include libraries -->' . PHP_EOL;        
 
-
+require_once 'lib/security.php';
 
 
 
@@ -75,4 +75,4 @@ if ($debug) {
 print "<!-- End of top.php -->";
 ?>
 
-<!-- ######################       Main Section       ####################### -->
+<!-- ######################       Main Section       ######################## -->

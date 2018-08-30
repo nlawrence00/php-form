@@ -51,20 +51,20 @@ print PHP_EOL . '<!-- SECTION: 1d misc variables -->' . PHP_EOL;
 //
 print PHP_EOL . '<!-- SECTION: 2 Process for when the form is submitted -->' . PHP_EOL;
 //
-
+if (isset($_POST["btnSubmit"])) {
 
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //
     print PHP_EOL . '<!-- SECTION: 2a Security -->' . PHP_EOL;
     
+    // the url for this form
+    $thisURL = $domain . $phpSelf;
     
-    
-    
-    
-        
-        
-        
-    
+    if (!securityCheck($thisURL)) {
+        $msg = '<p>Sorry you cannot access this page.</p>';
+        $msg.= '<p>Security breach detected and reported.</p>';
+        die($msg);
+    }
 
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //
@@ -190,7 +190,7 @@ print PHP_EOL . '<!-- SECTION: 2 Process for when the form is submitted -->' . P
 
 
 
-
+}   // ends if form was submitted.
 
 
 
