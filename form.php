@@ -24,7 +24,7 @@ print PHP_EOL . '<!-- SECTION: 1b form variables -->' . PHP_EOL;
 // Initialize variables one for each form element
 // in the order they appear on the form
 
-
+$firstName = "";       
 
 $email = "your-email@uvm.edu";     
 
@@ -34,7 +34,7 @@ print PHP_EOL . '<!-- SECTION: 1c form error flags -->' . PHP_EOL;
 //
 // Initialize Error Flags one for each form element we validate
 // in the order they appear on the form
-
+$firstNameERROR = false;
 $emailERROR = false;       
 
 ////%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -72,7 +72,7 @@ if (isset($_POST["btnSubmit"])) {
     // remove any potential JavaScript or html code from users input on the
     // form. Note it is best to follow the same order as declared in section 1c.
 
-    
+    $firstName = htmlentities($_POST["txtFirstName"], ENT_QUOTES, "UTF-8");       
     
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);       
         
@@ -89,13 +89,13 @@ if (isset($_POST["btnSubmit"])) {
     // order that the elements appear on your form so that the error messages
     // will be in the order they appear. errorMsg will be displayed on the form
     // see section 3b. The error flag ($emailERROR) will be used in section 3c.
-    
-    
-    
-    
-    
-    
-    
+    if ($firstName == "") {
+        $errorMsg[] = "Please enter your first name";
+        $firstNameERROR = true;
+    } elseif (!verifyAlphaNum($firstName)) {
+        $errorMsg[] = "Your first name appears to have extra character.";
+        $firstNameERROR = true;
+    }
     
     if ($email == "") {
         $errorMsg[] = 'Please enter your email address';
@@ -126,7 +126,7 @@ if (isset($_POST["btnSubmit"])) {
         $dataRecord = array();       
         
         // assign values to the dataRecord array
-    
+        $dataRecord[] = $firstName;
         $dataRecord[] = $email;
     
         // setup csv file
@@ -269,20 +269,20 @@ print PHP_EOL . '<!-- SECTION 3 Display Form -->' . PHP_EOL;
 
                 <fieldset class = "contact">
                     <legend>Contact Information</legend>
-
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    <p>
+                        <label class="required" for="txtFirstName">First Name</label>  
+                        <input autofocus
+                                <?php if ($firstNameERROR) print 'class="mistake"'; ?>
+                                id="txtFirstName"
+                                maxlength="45"
+                                name="txtFirstName"
+                                onfocus="this.select()"
+                                placeholder="Enter your first name"
+                                tabindex="100"
+                                type="text"
+                                value="<?php print $firstName; ?>"                    
+                        >                    
+                    </p>
                     
                     <p>
                         <label class = "required" for = "txtEmail">Email</label>
