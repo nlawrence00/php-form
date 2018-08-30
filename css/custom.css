@@ -79,3 +79,14 @@ input[type=submit]{
 .text-field{
     width: 100%;
 }     
+
+/* style the errors in the form so they are visible */       
+.mistake {
+    color: #fff;
+    background-color:#800;
+    border: thin solid #000;
+}     
+
+#errors ol li{
+    color: #ff5555;
+}

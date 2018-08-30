@@ -35,14 +35,14 @@ print PHP_EOL . '<!-- SECTION: 1c form error flags -->' . PHP_EOL;
 // Initialize Error Flags one for each form element we validate
 // in the order they appear on the form
 
-
+$emailERROR = false;       
 
 ////%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 print PHP_EOL . '<!-- SECTION: 1d misc variables -->' . PHP_EOL;
 //
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
- 
+$errorMsg = array();       
  
 // have we mailed the information to the user, flag variable?
 
@@ -97,13 +97,13 @@ if (isset($_POST["btnSubmit"])) {
     
     
     
-    
-    
-    
-    
-    
-    
-    
+    if ($email == "") {
+        $errorMsg[] = 'Please enter your email address';
+        $emailERROR = true;
+    } elseif (!verifyEmail($email)) {       
+        $errorMsg[] = 'Your email address appears to be incorrect.';
+        $emailERROR = true;    
+    }    
     
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //
@@ -111,9 +111,9 @@ if (isset($_POST["btnSubmit"])) {
     //
     // Process for when the form passes validation (the errorMsg array is empty)
     //    
-    
-    
-    
+    if (!$errorMsg) {
+        if ($debug)
+                print '<p>Form is valid</p>';
              
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -188,7 +188,7 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-
+    } // end form is valid     
 
 }   // ends if form was submitted.
 
@@ -209,19 +209,19 @@ print PHP_EOL . '<!-- SECTION 3 Display Form -->' . PHP_EOL;
     // If its the first time coming to the form or there are errors we are going
     // to display the form.
     
+    if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
+        print '<h2>Thank you for providing your information.</h2>';
+    
+        print '<p>For your records a copy of this data has ';
     
     
     
     
+        print 'been sent:</p>';
+        print '<p>To: ' . $email . '</p>';
     
     
-    
-    
-    
-    
-    
-    
-    
+    } else {       
      print '<h2>Register Today</h2>';
      print '<p class="form-heading">Your information will greatly help us with our research.</p>';
      
@@ -231,18 +231,18 @@ print PHP_EOL . '<!-- SECTION 3 Display Form -->' . PHP_EOL;
         //
         // display any error messages before we print out the form
    
-    
-     
+       if ($errorMsg) {    
+           print '<div id="errors">' . PHP_EOL;
+           print '<h2>Your form has the following mistakes that need to be fixed.</h2>' . PHP_EOL;
+           print '<ol>' . PHP_EOL;
 
+           foreach ($errorMsg as $err) {
+               print '<li>' . $err . '</li>' . PHP_EOL;       
+           }
 
-
-
-
-
-
-
-
-
+            print '</ol>' . PHP_EOL;
+            print '</div>' . PHP_EOL;
+       }
 
         //####################################
         //
@@ -287,8 +287,8 @@ print PHP_EOL . '<!-- SECTION 3 Display Form -->' . PHP_EOL;
                     <p>
                         <label class = "required" for = "txtEmail">Email</label>
                             <input 
-
-                                   id = "txtEmail"
+                                   <?php if ($emailERROR) print 'class="mistake"'; ?>
+                                   id = "txtEmail"     
                                    maxlength = "45"
                                    name = "txtEmail"
                                    onfocus = "this.select()"
@@ -305,7 +305,9 @@ print PHP_EOL . '<!-- SECTION 3 Display Form -->' . PHP_EOL;
                 <input class = "button" id = "btnSubmit" name = "btnSubmit" tabindex = "900" type = "submit" value = "Register" >
             </fieldset> <!-- ends buttons -->
 </form>     
-        
+<?php
+    } // ends body submit
+?>
     </article>     
 </main>     
 

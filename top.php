@@ -51,7 +51,7 @@ print  PHP_EOL . '<!-- include libraries -->' . PHP_EOL;
 
 require_once 'lib/security.php';
 
-
+include_once 'lib/validation-functions.php';     
 
 
 
