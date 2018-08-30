@@ -38,7 +38,9 @@ label {
     padding-right: 1em;
 }
 
-input{
+input,
+textarea,
+select{
     box-sizing: border-box;
     border: 2px solid #C2C2C2;
     box-shadow: 2px 2px 4px #EBEBEB; 
@@ -46,7 +48,9 @@ input{
     padding: 1em;
 }
 
-input:focus{
+input:focus,
+textarea:focus,
+select:focus{
     border: 1px solid #0C0;
 }     
 
