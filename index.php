@@ -6,7 +6,7 @@ include "top.php";
         <h2>Home</h2>
         <p>This example goes through the complete form process with just one input type (email) so that you get your form created and tested on the most simplest of terms. After that you can build the form by adding form elements one at a time, testing to make sure they work.</p>
 
-<p>For a live sample see: <a href="http://rerickso.w3.uvm.edu/php-form/supporting/commit-1/form.php" target="_blank">http://rerickso.w3.uvm.edu/php-form/form.php</a></p>
+<p>For a live sample see: <a href="http://rerickso.w3.uvm.edu/php-form/supporting/commit-2/form.php" target="_blank">http://rerickso.w3.uvm.edu/php-form/form.php</a></p>
 
 <p><a href="https://rerickso.w3.uvm.edu/php-book/" target="_blank">PHP Fast Track</a> is the text I wrote to go along with the PHP code. For html and css I use <a href="https://www.wiley.com/en-us/HTML+and+CSS%3A+Design+and+Build+Websites-p-9781118008188" target="_blank">HTML & CSS: Design and Build Websites</a>, By: Jon Duckett.</p>
 
