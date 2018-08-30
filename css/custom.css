@@ -1,0 +1,24 @@
+/* CSS designed by  Robert Erickson 
+*/
+/*****************     main layout section             ************************/
+body{
+    font: 14pt Arial,Helvetica,sans-serif;
+    margin: auto;
+    width: 90%;
+}
+
+/*****************     navigation section         *****************************/
+nav ol {
+    padding-left: 0;
+}     
+
+nav ol li{
+    display: inline-block;
+    list-style-type: none;
+    padding-right: 3em;
+}
+
+/*****************     footer section              ****************************/
+footer{
+    clear: both;
+}
