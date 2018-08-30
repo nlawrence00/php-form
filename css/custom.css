@@ -22,3 +22,60 @@ nav ol li{
 footer{
     clear: both;
 }
+
+/*****************     form section                ****************************/     
+fieldset{
+    border: 2px solid #00498e;
+    clear: both;
+    margin-top: 2em;
+    padding: 1em;
+}
+
+label {
+    color: #005cb3;
+    display: block;
+    font-weight: bold;
+    padding-right: 1em;
+}
+
+input{
+    box-sizing: border-box;
+    border: 2px solid #C2C2C2;
+    box-shadow: 2px 2px 4px #EBEBEB; 
+    border-radius: 3px;
+    padding: 1em;
+}
+
+input:focus{
+    border: 1px solid #0C0;
+}     
+
+input[type=submit]{
+    background: #005cb3 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 3px;
+    box-shadow: 1px 1px 4px #dadada;
+    color: #fff;
+    width: 100%;
+}
+
+.buttons legend{
+    display: none;
+}
+
+.buttons{
+    text-align: center;
+}
+
+.form-heading {
+    border-bottom: 2px solid #ddd;
+    font-size: 1.25em;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 1.75em;
+    padding-bottom: 0.4em;
+}
+
+.text-field{
+    width: 100%;
+}     
