@@ -45,7 +45,7 @@ print PHP_EOL . '<!-- SECTION: 1d misc variables -->' . PHP_EOL;
 $errorMsg = array();       
  
 // have we mailed the information to the user, flag variable?
-
+$mailed = false;       
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
@@ -154,39 +154,39 @@ if (isset($_POST["btnSubmit"])) {
         // build a message to display on the screen in section 3a and to mail
         // to the person filling out the form (section 2g).
 
+        $message = '<h2>Your  information.</h2>';       
+
+        foreach ($_POST as $htmlName => $value) {
+            
+            $message .= '<p>';
+            // breaks up the form names into words. for example
+            // txtFirstName becomes First Name       
+            $camelCase = preg_split('/(?=[A-Z])/', substr($htmlName, 3));
+
+            foreach ($camelCase as $oneWord) {
+                $message .= $oneWord . ' ';
+            }
+    
+            $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</p>';
+
+        }
         
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //
         print PHP_EOL . '<!-- SECTION: 2g Mail to user -->' . PHP_EOL;
         //
         // Process for mailing a message which contains the forms data
         // the message was built in section 2f.
-        
+        $to = $email; // the person who filled out the form     
+        $cc = '';       
+        $bcc = '';
 
+        $from = 'WRONG site <customer.service@your-site.com>';
 
+        // subject of mail should make sense to your form
+        $subject = 'Groovy: ';
 
-
-
-
-
-
-
+        $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
 
     } // end form is valid     
 
@@ -213,14 +213,14 @@ print PHP_EOL . '<!-- SECTION 3 Display Form -->' . PHP_EOL;
         print '<h2>Thank you for providing your information.</h2>';
     
         print '<p>For your records a copy of this data has ';
-    
-    
-    
+        if (!$mailed) {    
+            print "not ";         
+        }
     
         print 'been sent:</p>';
         print '<p>To: ' . $email . '</p>';
     
-    
+        print $message;
     } else {       
      print '<h2>Register Today</h2>';
      print '<p class="form-heading">Your information will greatly help us with our research.</p>';

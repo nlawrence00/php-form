@@ -53,7 +53,7 @@ require_once 'lib/security.php';
 
 include_once 'lib/validation-functions.php';     
 
-
+include_once 'lib/mail-message.php';       
 
 print  PHP_EOL . '<!-- finished including libraries -->' . PHP_EOL;        
 ?>
