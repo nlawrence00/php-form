@@ -28,5 +28,5 @@ function securityCheck($myFormURL = "") {
     
     return $status;
 }
-print PHP_EOL . '<!--  END include security ' . $token . ' -->' . PHP_EOL;
+print PHP_EOL . '<!--  END include security NOTE: Put token here as well -->' . PHP_EOL;
 ?>
